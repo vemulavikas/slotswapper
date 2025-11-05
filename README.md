@@ -105,7 +105,8 @@ The frontend can be deployed to static hosting services like Netlify, Vercel, or
 
 1. Build the frontend: `npm run build`
 2. Upload the `dist` folder to your hosting provider
-3. Configure the API base URL in `frontend/src/api/api.js` to point to your deployed backend
+3. **Important**: Set the `VITE_API_URL` environment variable to your deployed backend URL (e.g., `https://your-backend-url.com/api`)
+4. Configure your hosting provider's environment variables accordingly
 
 ### Backend Deployment
 The backend can be deployed to cloud platforms like Heroku, Railway, or Vercel.
@@ -188,4 +189,6 @@ This project is licensed under the ISC License.
 
 ## Demo
 
-[Live Demo Link](https://your-demo-link.com)
+[Live Demo](https://slotswapper-omega.vercel.app)
+
+Backend API: https://slotswapper-c69blcn8r-vikas-projects-cb3a2c0d.vercel.app

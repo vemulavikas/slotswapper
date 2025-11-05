@@ -58,13 +58,13 @@ export default function Requests() {
               >
                 <div className="text-sm text-gray-700">
                   <p>
-                    <strong>{req.requester.name}</strong> wants to swap their{" "}
+                    <strong>{req.requester?.name}</strong> wants to swap their{" "}
                     <span className="font-medium text-indigo-600">
-                      {req.mySlot.title}
+                      {req.mySlot?.title || 'Unknown Event'}
                     </span>{" "}
                     with your{" "}
                     <span className="font-medium text-indigo-600">
-                      {req.theirSlot.title}
+                      {req.theirSlot?.title || 'Unknown Event'}
                     </span>
                     .
                   </p>
@@ -73,7 +73,7 @@ export default function Requests() {
                   </p>
                 </div>
 
-                {req.status === "PENDING" && (
+                {req.status === "PENDING" && req.mySlot && req.theirSlot && (
                   <div className="flex gap-2 mt-2 sm:mt-0">
                     <button
                       onClick={() => respondToSwap(req._id, true)}
@@ -111,12 +111,12 @@ export default function Requests() {
                   <p>
                     You requested{" "}
                     <span className="font-medium text-indigo-600">
-                      {req.theirSlot.title}
+                      {req.theirSlot?.title || 'Unknown Event'}
                     </span>{" "}
                     from{" "}
-                    <strong>{req.responder.name}</strong> in exchange for your{" "}
+                    <strong>{req.responder?.name}</strong> in exchange for your{" "}
                     <span className="font-medium text-indigo-600">
-                      {req.mySlot.title}
+                      {req.mySlot?.title || 'Unknown Event'}
                     </span>
                     .
                   </p>

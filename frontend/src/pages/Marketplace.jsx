@@ -90,7 +90,7 @@ export default function Marketplace() {
               key={slot._id}
               className="bg-white rounded-2xl shadow p-4 hover:shadow-lg transition"
             >
-              <h2 className="font-semibold text-lg">{slot.title}</h2>
+              <h2 className="font-semibold text-lg">{slot.title || 'Untitled Event'}</h2>
               <p className="text-sm text-gray-600 mt-1">
                 {new Date(slot.startTime).toLocaleString("en-IN", {
                   dateStyle: "medium",
@@ -98,7 +98,7 @@ export default function Marketplace() {
                 })}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                By: <strong>{slot.owner.name}</strong>
+                By: <strong>{slot.owner?.name || 'Unknown'}</strong>
               </p>
 
               <button
@@ -120,7 +120,7 @@ export default function Marketplace() {
               Offer a Slot in Exchange
             </h2>
             <p className="text-gray-600 text-sm mb-4 text-center">
-              You’re requesting: <strong>{targetSlot.title}</strong> <br />
+              You’re requesting: <strong>{targetSlot?.title || 'Unknown Event'}</strong> <br />
               Choose one of your own SWAPPABLE slots to offer:
             </p>
 
@@ -135,7 +135,7 @@ export default function Marketplace() {
                 <option value="">Select your slot...</option>
                 {mySlots.map((slot) => (
                   <option key={slot._id} value={slot._id}>
-                    {slot.title} ({new Date(slot.startTime).toLocaleString("en-IN", {
+                    {slot.title || 'Untitled'} ({new Date(slot.startTime).toLocaleString("en-IN", {
                       dateStyle: "medium",
                       timeStyle: "short",
                     })})
