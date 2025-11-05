@@ -12,8 +12,8 @@ export default function Requests() {
     const res = await api.get("/events"); // get my events just to recheck states later
     // get all swap requests (filter by me)
     const allReq = await api.get("/swap-requests"); // optional endpoint, if not built we’ll mock below
-    setIncoming(allReq.data.incoming);
-    setOutgoing(allReq.data.outgoing);
+    setIncoming(allReq.data.incoming.filter(req => req && req.requester && req.mySlot && req.theirSlot));
+    setOutgoing(allReq.data.outgoing.filter(req => req && req.responder && req.mySlot && req.theirSlot));
     setRefreshing(false);
   };
 
